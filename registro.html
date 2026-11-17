@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Personal - Tiendas Mass</title>
+  
+  <!-- Enlace a Bootstrap 5 para el diseño estructurado -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Tu CSS centralizado -->
+  <link rel="stylesheet" href="estilos.css?v=14">
+  
+  <!-- Enlace a tu JavaScript -->
+  <script src="app.js" defer></script>
+</head>
+<body style="background-color: #f4f6f8;"> <!-- Fondo gris claro -->
+
+<!-- Menú de navegación global -->
+<header class="encabezado bg-white shadow-sm">
+  <nav class="barra-nav">
+    <a href="index.html" class="marca" style="text-shadow: 3px 3px 0px var(--mass-amarillo); text-decoration:none; font-weight:900;">TIENDA MASS</a>
+    <ul class="nav-enlaces mb-0">
+      <li><a href="index.html">Acerca de nosotros</a></li>
+      <li><a href="productos.html">Productos y servicios</a></li>
+      <li><a href="registro.html" style="color: #d6b000;">Trabaja con nosotros</a></li>
+      <li><a href="encuesta.html">Encuesta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Contenedor principal -->
+<div class="container my-5 seccion" style="max-width: 900px;">
+  
+  <!-- EL CUADRO PROFESIONAL -->
+  <div class="card border-0 shadow-lg" style="border-radius: 10px; overflow: hidden;">
+    
+    <!-- La cabecera amarilla -->
+    <div style="background-color: var(--mass-amarillo, #FFD100); padding: 25px; text-align: center;">
+      <h3 class="mb-0 fw-bold" style="color: var(--mass-azul, #0033A0);">Registro de trabajador - Tiendas Mass</h3>
+    </div>
+    
+    <!-- El cuerpo del cuadro (Fondo blanco) -->
+    <div class="card-body p-4 p-md-5" style="background-color: white;">
+      
+      <!-- Mensaje de éxito oculto para el JS -->
+      <div id="respuestaRegistro" class="alert alert-success text-center" style="display: none; font-weight: bold; margin-bottom: 25px;">
+        ¡Postulación enviada con éxito! Nuestro equipo de RRHH te contactará pronto.
+      </div>
+
+      <form id="formRegistro">
+        <!-- Texto con asterisco en rojo (text-danger) -->
+        <p class="fw-bold small mb-4" style="color: #555;">Los campos marcados con asterisco (<span class="text-danger">*</span>) son obligatorios.</p>
+        
+        <h5 class="border-bottom pb-2 mb-4 text-secondary">Datos Personales</h5>
+        <div class="row g-4 mb-4">
+          <div class="col-md-6 col-12">
+            <label for="nombres" class="form-label text-dark">Nombres <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="nombres" placeholder="Ej. Juan Carlos" required>
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="apellidos" class="form-label text-dark">Apellidos <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="apellidos" placeholder="Ej. Ramirez Gutierrez" required>
+          </div>
+        </div>
+        <div class="row g-4 mb-5">
+          <div class="col-md-6 col-12">
+            <label for="tipoDoc" class="form-label text-dark">Tipo de Documento <span class="text-danger">*</span></label>
+            <select class="form-select" id="tipoDoc" required>
+              <option selected disabled value="">Seleccionar</option>
+              <option value="DNI">DNI</option>
+              <option value="CE">Carnet de Extranjería</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="numDoc" class="form-label text-dark">N° de Documento <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="numDoc" placeholder="12345678" required>
+          </div>
+        </div>
+
+        <h5 class="border-bottom pb-2 mb-4 text-secondary">Contacto y Residencia</h5>
+        <div class="row g-4 mb-4">
+          <div class="col-md-6 col-12">
+            <label for="telefono" class="form-label text-dark">Teléfono / Celular <span class="text-danger">*</span></label>
+            <input type="tel" class="form-control" id="telefono" maxlength="9" placeholder="987654321" required>
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="correo" class="form-label text-dark">Correo Electrónico <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com" required>
+          </div>
+        </div>
+        <div class="mb-5">
+          <label for="direccion" class="form-label text-dark">Dirección <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="direccion" placeholder="Av., Calle, N° o Dpto." required>
+        </div>
+
+        <h5 class="border-bottom pb-2 mb-4 text-secondary">Información Laboral</h5>
+        <div class="row g-4 mb-4">
+          <div class="col-md-6 col-12">
+            <label for="sede" class="form-label text-dark">Sede <span class="text-danger">*</span></label>
+            <select class="form-select" id="sede" required>
+              <option selected disabled value="">Seleccionar sede...</option>
+              <option value="Lima">Lima</option>
+              <option value="Arequipa">Arequipa</option>
+              <option value="Cusco">Cusco</option>
+              <option value="Ica">Ica</option>
+              <option value="Tumbes">Tumbes</option>
+              <option value="Huancavelica">Huancavelica</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="puesto" class="form-label text-dark">Puesto a Asignar <span class="text-danger">*</span></label>
+            <select class="form-select" id="puesto" required>
+              <option selected disabled value="">Seleccionar puesto...</option>
+              <option value="cajero">Cajero(a)</option>
+              <option value="reponedor">Reponedor</option>
+              <option value="administrador">Administrador de Tienda</option>
+              <option value="prevencion">Seguridad</option>
+            </select>
+          </div>
+          
+          <!-- CAMPO DINÁMICO (Aparece con JS) -->
+          <div class="col-12" id="divExperiencia" style="display: none;">
+            <label for="experiencia" class="form-label fw-bold" style="color: var(--mass-azul, #0033A0);">¿Cuántos años de experiencia tienes en este puesto? <span class="text-danger">*</span></label>
+            <input type="number" class="form-control border-primary" id="experiencia" min="0" placeholder="Ej. 1, 2, 3...">
+          </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+          <div class="col-md-6 col-12">
+            <label for="modalidad" class="form-label text-dark">Jornada Laboral <span class="text-danger">*</span></label>
+            <select class="form-select" id="modalidad" required>
+              <option selected disabled value="">Seleccionar jornada...</option>
+              <option value="full-time">Tiempo Completo</option>
+              <option value="part-time">Medio Tiempo</option>
+            </select>
+          </div>
+        </div>
+
+        <h5 class="border-bottom pb-2 mb-4 text-secondary">Información Adicional y Emergencia</h5>
+        <div class="row g-4 mb-4">
+          <div class="col-md-6 col-12">
+            <label for="contactoEmergencia" class="form-label text-dark">Contacto de Emergencia <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="contactoEmergencia" placeholder="Nombre completo y parentesco" required>
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="telEmergencia" class="form-label text-dark">Teléfono de Emergencia <span class="text-danger">*</span></label>
+            <input type="tel" class="form-control" id="telEmergencia" maxlength="9" placeholder="987654321" required>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="observaciones" class="form-label text-dark">Observaciones o Notas Adicionales <span class="text-muted">(Opcional)</span></label>
+          <textarea class="form-control" id="observaciones" rows="2" placeholder="Alergias, experiencia previa, disponibilidad de horario..."></textarea>
+        </div>
+
+        <div class="form-check mb-2 mt-5">
+          <input class="form-check-input" type="checkbox" id="terminos" required>
+          <label class="form-check-label small text-dark" for="terminos">
+            He leído y acepto las políticas de privacidad y protección de datos. <span class="text-danger">*</span>
+          </label>
+        </div>
+        <div class="form-check mb-5">
+          <input class="form-check-input" type="checkbox" id="declaracion" required>
+          <label class="form-check-label small text-dark" for="declaracion">
+            He leído y acepto la autorización del tratamiento de datos personales para usos adicionales. <span class="text-danger">*</span>
+          </label>
+        </div>
+
+        <!-- Botones de Acción centrados con animación -->
+        <div class="d-flex gap-3 justify-content-center pt-4 border-top mt-4">
+          <button type="reset" class="btn boton-animado px-4 py-2" style="background-color: #e9ecef; color: #495057; font-weight: bold; border-radius: 6px; border: 1px solid #ced4da;">Limpiar Datos</button>
+          <button type="submit" class="btn boton-animado px-5 py-2" style="background-color: var(--mass-amarillo, #FFD100); color: var(--mass-azul, #0033A0); font-weight: bold; border-radius: 6px;">Registrar Trabajador</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

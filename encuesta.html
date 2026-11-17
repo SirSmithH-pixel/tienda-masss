@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta de Satisfacción - Tiendas Mass</title>
+  
+  <!-- Enlace a Bootstrap 5 para el diseño estructurado -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Tu CSS centralizado -->
+  <link rel="stylesheet" href="estilos.css?v=16">
+  
+  <!-- Enlace a tu JavaScript -->
+  <script src="app.js" defer></script>
+</head>
+<body style="background-color: #f4f6f8;"> <!-- Fondo gris claro -->
+
+<!-- Menú de navegación global -->
+<header class="encabezado bg-white shadow-sm">
+  <nav class="barra-nav">
+    <a href="index.html" class="marca" style="text-shadow: 3px 3px 0px var(--mass-amarillo); text-decoration:none; font-weight:900;">TIENDA MASS</a>
+    <ul class="nav-enlaces mb-0">
+      <li><a href="index.html">Acerca de nosotros</a></li>
+      <li><a href="productos.html">Productos y servicios</a></li>
+      <li><a href="registro.html">Trabaja con nosotros</a></li>
+      <li><a href="encuesta.html" style="color: #d6b000;">Encuesta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Contenedor principal -->
+<div class="container my-5 seccion" style="max-width: 900px;">
+  
+  <!-- EL CUADRO PROFESIONAL -->
+  <div class="card border-0 shadow-lg" style="border-radius: 10px; overflow: hidden;">
+    
+    <!-- La cabecera amarilla -->
+    <div style="background-color: var(--mass-amarillo, #FFD100); padding: 25px; text-align: center;">
+      <h3 class="mb-0 fw-bold" style="color: var(--mass-azul, #0033A0);">Encuesta de Satisfacción</h3>
+      <p class="mb-0 mt-2" style="color: var(--mass-azul);">Tu opinión nos ayuda a mejorar nuestros precios y servicios.</p>
+    </div>
+    
+    <!-- El cuerpo del cuadro (Fondo blanco) -->
+    <div class="card-body p-4 p-md-5" style="background-color: white;">
+      
+      <!-- Mensaje de éxito oculto para el JS -->
+      <div id="respuestaEncuesta" class="alert alert-success text-center" style="display: none; font-weight: bold; margin-bottom: 25px;">
+        ¡Gracias por tu tiempo! Tus respuestas han sido enviadas correctamente.
+      </div>
+
+      <form id="formEncuesta">
+        <p class="small text-muted mb-4 fw-bold">
+          Los campos marcados con asterisco (<span class="text-danger">*</span>) son obligatorios.
+        </p>
+        
+        <div class="row g-4">
+          <!-- P1 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark">1. ¿Con qué frecuencia visita Tienda Mass? <span class="text-danger">*</span></label>
+            <select class="form-select border-secondary-subtle" required>
+              <option selected disabled value="">Seleccionar...</option>
+              <option value="diario">Diario</option>
+              <option value="interdiario">Interdiario (2-3 veces por semana)</option>
+              <option value="semanal">Semanal</option>
+              <option value="quincenal">Quincenal o Mensual</option>
+            </select>
+          </div>
+          <!-- P2 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark d-block">2. ¿Motivo principal es la cercanía? <span class="text-danger">*</span></label>
+            <div class="pt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p2" id="p2_si" required>
+                <label class="form-check-label text-dark" for="p2_si">Sí, está cerca</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p2" id="p2_no">
+                <label class="form-check-label text-dark" for="p2_no">No, otros motivos</label>
+              </div>
+            </div>
+          </div>
+          <!-- P3 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark">3. ¿Precios frente a otras bodegas? <span class="text-danger">*</span></label>
+            <select class="form-select border-secondary-subtle" required>
+              <option value="" selected disabled>Seleccionar...</option>
+              <option value="mucho_mas_barato">Mucho más económicos</option>
+              <option value="ligeramente_barato">Ligeramente más baratos</option>
+              <option value="igual">Igual de precios</option>
+              <option value="mas_caro">Más caros</option>
+            </select>
+          </div>
+          <!-- P4 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark d-block">4. ¿Encuentra siempre stock? <span class="text-danger">*</span></label>
+            <div class="pt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p4" id="p4_si" required>
+                <label class="form-check-label text-dark" for="p4_si">Siempre</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p4" id="p4_aveces">
+                <label class="form-check-label text-dark" for="p4_aveces">A veces</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p4" id="p4_rara">
+                <label class="form-check-label text-dark" for="p4_rara">Rara vez</label>
+              </div>
+            </div>
+          </div>
+          <!-- P5 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark">5. Calidad-precio sobre marcas propias: <span class="text-danger">*</span></label>
+            <select class="form-select border-secondary-subtle" required>
+              <option value="" selected disabled>Seleccionar...</option>
+              <option value="excelente">Excelente calidad a menor costo</option>
+              <option value="buena">Buena relación costo-beneficio</option>
+              <option value="regular">Regular</option>
+              <option value="mala">Mala calidad</option>
+            </select>
+          </div>
+          <!-- P6 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark d-block">6. ¿Pasillos cómodos para transitar? <span class="text-danger">*</span></label>
+            <div class="pt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p6" id="p6_si" required>
+                <label class="form-check-label text-dark" for="p6_si">Sí, adecuado</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p6" id="p6_no">
+                <label class="form-check-label text-dark" for="p6_no">Estrecho</label>
+              </div>
+            </div>
+          </div>
+          <!-- P7 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark d-block">7. ¿Precios visibles en góndolas? <span class="text-danger">*</span></label>
+            <div class="pt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p7" id="p7_si" required>
+                <label class="form-check-label text-dark" for="p7_si">Sí, todo claro</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p7" id="p7_no">
+                <label class="form-check-label text-dark" for="p7_no">Faltan / No visibles</label>
+              </div>
+            </div>
+          </div>
+          <!-- P8 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark">8. Coincidencia precio estante vs caja: <span class="text-danger">*</span></label>
+            <select class="form-select border-secondary-subtle" required>
+              <option value="" selected disabled>Seleccionar...</option>
+              <option value="1">Falla mucho</option>
+              <option value="3">A veces</option>
+              <option value="5">Coincide siempre</option>
+            </select>
+          </div>
+          <!-- P9 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark">9. Nivel de limpieza general: <span class="text-danger">*</span></label>
+            <select class="form-select border-secondary-subtle" required>
+              <option value="" selected disabled>Seleccionar...</option>
+              <option value="1">Deficiente</option>
+              <option value="3">Aceptable</option>
+              <option value="5">Excelente</option>
+            </select>
+          </div>
+          <!-- P10 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark d-block">10. ¿Pasillos libres de cajas? <span class="text-danger">*</span></label>
+            <div class="pt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p10" id="p10_si" required>
+                <label class="form-check-label text-dark" for="p10_si">Sí, despejados</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p10" id="p10_no">
+                <label class="form-check-label text-dark" for="p10_no">Obstruidos</label>
+              </div>
+            </div>
+          </div>
+          <!-- P11 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark">11. Velocidad de atención en cajas: <span class="text-danger">*</span></label>
+            <select class="form-select border-secondary-subtle" required>
+              <option value="" selected disabled>Seleccionar...</option>
+              <option value="muy_rapida">Muy rápida</option>
+              <option value="normal">Aceptable</option>
+              <option value="lenta">Lenta</option>
+            </select>
+          </div>
+          <!-- P12 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark d-block">12. ¿Abren cajas en colas largas? <span class="text-danger">*</span></label>
+            <div class="pt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p12" id="p12_si" required>
+                <label class="form-check-label text-dark" for="p12_si">Sí, de inmediato</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p12" id="p12_no">
+                <label class="form-check-label text-dark" for="p12_no">No</label>
+              </div>
+            </div>
+          </div>
+          <!-- P13 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark">13. Amabilidad del personal: <span class="text-danger">*</span></label>
+            <select class="form-select border-secondary-subtle" required>
+              <option value="" selected disabled>Seleccionar...</option>
+              <option value="1">Poco amable</option>
+              <option value="3">Neutral</option>
+              <option value="5">Muy amable</option>
+            </select>
+          </div>
+          <!-- P14 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark d-block">14. ¿Le orientan al buscar productos? <span class="text-danger">*</span></label>
+            <div class="pt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p14" id="p14_si" required>
+                <label class="form-check-label text-dark" for="p14_si">Sí, me ayudan</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p14" id="p14_no">
+                <label class="form-check-label text-dark" for="p14_no">Ausentes</label>
+              </div>
+            </div>
+          </div>
+          <!-- P15 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark">15. Frescura de verduras/vegetales: <span class="text-danger">*</span></label>
+            <select class="form-select border-secondary-subtle" required>
+              <option value="" selected disabled>Seleccionar...</option>
+              <option value="1">Deficiente</option>
+              <option value="3">Aceptable</option>
+              <option value="5">Muy fresco</option>
+            </select>
+          </div>
+          <!-- P16 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark d-block">16. ¿Desabastecimiento en feriados? <span class="text-danger">*</span></label>
+            <div class="pt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p16" id="p16_si" required>
+                <label class="form-check-label text-dark" for="p16_si">Sí, frecuente</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p16" id="p16_no">
+                <label class="form-check-label text-dark" for="p16_no">Rara vez / No</label>
+              </div>
+            </div>
+          </div>
+          <!-- P17 -->
+          <div class="col-12">
+            <label class="form-label fw-bold text-dark d-block">17. Medios de pago habituales: <span class="text-danger">*</span></label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="p17_efectivo">
+              <label class="form-check-label text-dark" for="p17_efectivo">Efectivo</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="p17_yape">
+              <label class="form-check-label text-dark" for="p17_yape">Yape / Plin / QR</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="p17_tarjeta">
+              <label class="form-check-label text-dark" for="p17_tarjeta">Tarjeta Débito/Crédito</label>
+            </div>
+          </div>
+          <!-- P18 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark d-block">18. ¿POS operan sin caídas? <span class="text-danger">*</span></label>
+            <div class="pt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p18" id="p18_si" required>
+                <label class="form-check-label text-dark" for="p18_si">Sí, funcionan bien</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="p18" id="p18_no">
+                <label class="form-check-label text-dark" for="p18_no">Fallan / Demoran</label>
+              </div>
+            </div>
+          </div>
+          <!-- P19 -->
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold text-dark">19. ¿Recomendaría Tiendas Mass? <span class="text-danger">*</span></label>
+            <select class="form-select border-secondary-subtle" required>
+              <option value="" selected disabled>Seleccionar...</option>
+              <option value="definitivamente_si">Definitivamente sí</option>
+              <option value="neutral">Indeciso / Neutral</option>
+              <option value="no">No lo recomendaría</option>
+            </select>
+          </div>
+          <!-- P20 -->
+          <div class="col-12">
+            <label class="form-label fw-bold text-dark">20. Comentarios finales o sugerencias:</label>
+            <textarea class="form-control border-secondary-subtle" rows="3" placeholder="Escriba aquí sus comentarios..."></textarea>
+          </div>
+        </div>
+        
+        <!-- Botones de Acción centrados con la clase de animación -->
+        <div class="d-flex gap-3 justify-content-center pt-3 border-top mt-5">
+          <button type="reset" class="btn boton-animado px-4 py-2" style="background-color: #e9ecef; color: #495057; font-weight: bold; border-radius: 6px; border: 1px solid #ced4da;">Limpiar</button>
+          <!-- Fíjate en type="submit" para que el JS se active -->
+          <button type="submit" class="btn boton-animado px-5 py-2" style="background-color: var(--mass-amarillo, #FFD100); color: var(--mass-azul, #0033A0); font-weight: bold; border-radius: 6px;">Enviar Encuesta</button>
+        </div>
+      </form>
+    </div>
+  </div> 
+</div>
+
+</body>
+</html>
