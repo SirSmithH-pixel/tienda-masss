@@ -160,3 +160,15 @@ if (formEncuesta) {
     respuesta.style.animation = 'fadeInUp 0.8s ease-out forwards';
   });
 }
+/* ==============================================================
+   6. MENÚ HAMBURGUESA (Móviles)
+============================================================== */
+const botonHamburguesa = document.querySelector('.menu-toggle');
+const menuPrincipal = document.getElementById('menuPrincipal');
+
+if (botonHamburguesa && menuPrincipal) {
+  botonHamburguesa.addEventListener('click', function() {
+    // La función 'toggle' pone la clase si no está, y la quita si ya está
+    menuPrincipal.classList.toggle('mostrar');
+  });
+}
