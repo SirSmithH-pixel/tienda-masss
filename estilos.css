@@ -22,7 +22,7 @@ body {
 /* Flexbox en la barra de navegación */
 .barra-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* El logo a la izquierda y menú/hamburguesa a la derecha */
   align-items: center;
   padding: 15px 20px;
   background-color: var(--mass-blanco);
@@ -47,15 +47,14 @@ body {
 /* Grid Fijo de 4 columnas para el Catálogo de Productos */
 .catalogo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Esto fuerza las 4 columnas en fila */
+  grid-template-columns: repeat(4, 1fr);
   gap: 25px;
   margin-bottom: 40px;
 }
 
 /* =========================================
-   3. USO DE TRANSICIONES (5 en total)
+   3. USO DE TRANSICIONES
 ========================================= */
-/* Transición 1: Enlaces del menú (cambio de color y escala) */
 .nav-enlaces a {
   text-decoration: none;
   color: var(--mass-azul);
@@ -67,7 +66,6 @@ body {
   transform: scale(1.1);
 }
 
-/* Transición 2: Botones generales e íconos (fondo, sombra y elevación) */
 .btn-mass, .card .icon {
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
@@ -77,7 +75,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Transición 3: Entradas de los formularios (borde y sombra al hacer foco) */
 .form-control, .form-select {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -89,7 +86,6 @@ body {
 /* =========================================
    4. USO DE DOS ANIMACIONES
 ========================================= */
-/* Animación 1: FadeInUp (Aparición suave hacia arriba) para las secciones */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -98,7 +94,6 @@ body {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Animación 2: Pulse (Latido) para el título principal o logo */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.03); }
@@ -109,9 +104,8 @@ body {
 }
 
 /* =========================================
-   5. DISEÑO DE IMÁGENES Y TARJETAS
+   5. DISEÑO DE IMÁGENES Y PRODUCTOS
 ========================================= */
-/* Requisito de la rúbrica: Imagen responsiva */
 .img-responsiva {
   max-width: 100%;
   height: auto;
@@ -120,7 +114,6 @@ body {
   border-radius: 8px;
 }
 
-/* Título de categorías */
 .categoria-titulo {
   color: var(--mass-azul);
   font-size: 2rem;
@@ -130,7 +123,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* Tarjeta del Producto - Transición 4 (Elevación) */
 .producto-card {
   background: var(--mass-blanco);
   border: 2px solid var(--mass-amarillo-claro);
@@ -147,7 +139,6 @@ body {
   border-color: var(--mass-amarillo);
 }
 
-/* Contenedor de la foto de producto */
 .producto-img-container {
   width: 100%;
   height: 200px;
@@ -156,7 +147,6 @@ body {
   padding: 10px;
 }
 
-/* Transición 5: Zoom a la foto al pasar el mouse */
 .producto-img {
   width: 100%;
   height: 100%;
@@ -168,7 +158,6 @@ body {
   transform: scale(1.15);
 }
 
-/* Información del producto y Marca */
 .producto-info {
   padding: 15px 20px 25px;
   background-color: var(--mass-amarillo-claro);
@@ -207,127 +196,95 @@ body {
 }
 
 /* =========================================
-   6. DISEÑO RESPONSIVO (MEDIA QUERIES)
-   Se coloca al final para evitar conflictos
+   6. ESTILOS ACERCA DE NOSOTROS
 ========================================= */
-
-/* 2do Dispositivo: TABLETS (768px a 991px) */
-@media (max-width: 991px) {
-  .hero h1 { font-size: 3rem; }
-  .marca { font-size: 2.8rem; }
-  
-  /* En tablets, el catálogo baja a 2 columnas */
-  .catalogo-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* 3er Dispositivo: MÓVILES (Menos de 768px) */
-@media (max-width: 767px) {
-  /* Navegación colapsa hacia abajo */
-  .barra-nav {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
-  .nav-enlaces {
-    flex-direction: column;
-    width: 100%;
-  }
-  .hero h1 { font-size: 2.2rem; }
-  .seccion h2 { font-size: 2rem; }
-  
-  /* Secciones de 2 columnas pasan a 1 columna */
-  .cards {
-    grid-template-columns: 1fr;
-  }
-  
-  /* En celulares, el catálogo baja a 1 columna */
-  .catalogo-grid {
-    grid-template-columns: 1fr; 
-  }
-}
-/* =========================================
-   7. ESTILOS ESPECÍFICOS ACERCA DE NOSOTROS
-========================================= */
-.page h1 { 
-  font-family: Cambria, Georgia, serif; 
-  font-weight: 700; 
-}
-
-/* El panel amarillo centrado */
-.panel { 
-  background: var(--mass-amarillo); 
-  border-radius: 8px; 
-  padding: 40px 32px; 
-  margin-bottom: 24px; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; /* Centra el logo y texto */
-  text-align: center; 
-}
-
-.panel .logo { 
-  font-family: Cambria, Georgia, serif; 
-  font-size: 3rem; 
-  font-weight: 700; 
-  letter-spacing: 1px; 
-  color: var(--mass-azul); 
-}
-
-.panel .tagline { 
-  font-style: italic; 
-  font-size: 1.1rem; 
-  color: var(--mass-azul);
-  margin-top: 8px; 
-}
-
-.stats { 
-  display: flex; 
-  justify-content: center; 
-  gap: 70px; 
-  flex-wrap: wrap; 
-  margin-top: 30px;
-}
-
+.page h1 { font-family: Cambria, Georgia, serif; font-weight: 700; }
+.panel { background: var(--mass-amarillo); border-radius: 8px; padding: 40px 32px; margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.panel .logo { font-family: Cambria, Georgia, serif; font-size: 3rem; font-weight: 700; letter-spacing: 1px; color: var(--mass-azul); }
+.panel .tagline { font-style: italic; font-size: 1.1rem; color: var(--mass-azul); margin-top: 8px; }
+.stats { display: flex; justify-content: center; gap: 70px; flex-wrap: wrap; margin-top: 30px;}
 .stat { text-align: center; color: var(--mass-azul); }
 .stat .number { font-size: 2.2rem; font-weight: 700; margin-bottom: 5px; }
 .stat .label { font-size: 1rem; line-height: 1.3; }
-
-/* Sección Quiénes Somos */
-.quienes { 
-  background: var(--mass-amarillo-claro); 
-  border-radius: 8px; 
-  padding: 32px; 
-  margin-bottom: 24px; 
-}
+.quienes { background: var(--mass-amarillo-claro); border-radius: 8px; padding: 32px; margin-bottom: 24px; }
 .quienes h2 { font-family: Cambria, Georgia, serif; font-size: 1.6rem; margin-bottom: 12px; color: var(--mass-azul); }
 .quienes p { font-size: 1.05rem; }
-
-/* Grid de Locales */
 .locales h2 { font-family: Cambria, Georgia, serif; font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 24px; }
 .locales-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.local-card { margin: 0; background: var(--mass-amarillo-claro); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.local-card { margin: 0; background: var(--mass-amarillo-claro); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;}
 .local-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 .local-card img { display: block; width: 100%; height: 180px; object-fit: cover; background: var(--mass-amarillo); }
 .local-card figcaption { padding: 15px 16px; }
 .local-card .ciudad { font-family: Cambria, Georgia, serif; font-weight: 700; font-size: 1.2rem; }
 .local-card .region { font-size: 0.9rem; opacity: 0.85; }
+.boton-animado { transition: all 0.3s ease !important; }
+.boton-animado:hover { transform: translateY(-4px) !important; box-shadow: 0 8px 15px rgba(0,0,0,0.15) !important; filter: brightness(1.05); }
 
-@media (max-width: 768px) { 
+/* =========================================
+   7. MENÚ HAMBURGUESA (Configuración Inicial)
+========================================= */
+.menu-toggle {
+  display: none; /* Oculto en PC por defecto */
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--mass-azul);
+  cursor: pointer;
+}
+
+/* =========================================
+   8. DISEÑO RESPONSIVO UNIFICADO
+========================================= */
+/* TABLETS (Menos de 991px) */
+@media (max-width: 991px) {
+  .hero h1 { font-size: 3rem; }
+  .marca { font-size: 2.8rem; }
+  .catalogo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* CELULARES (Menos de 768px) */
+@media (max-width: 768px) {
+  /* 1. Mantiene el logo a la izquierda y la hamburguesa a la derecha */
+  .barra-nav { 
+    display: flex;
+    flex-direction: row !important; /* Fuerza a estar en la misma línea */
+    flex-wrap: wrap; /* Permite que el menú caiga abajo */
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 20px;
+  }
+  
+  /* 2. Muestra el botón hamburguesa */
+  .menu-toggle {
+    display: block; 
+  }
+  
+  /* 3. El menú se oculta por defecto y se va hacia abajo */
+  .nav-enlaces { 
+    display: none; 
+    flex-direction: column; 
+    width: 100%; 
+    text-align: center;
+    gap: 15px; 
+    padding-top: 15px;
+    margin: 0;
+  }
+
+  /* 4. Clase que agrega el JS para mostrar el menú */
+  .nav-enlaces.mostrar {
+    display: flex;
+    animation: fadeInUp 0.4s ease-out;
+  }
+
+  /* Ajustes generales para celular */
+  .hero h1 { font-size: 2.2rem; }
+  .seccion h2 { font-size: 2rem; }
+  .cards { grid-template-columns: 1fr; }
+  .catalogo-grid { grid-template-columns: 1fr; }
   .locales-grid { grid-template-columns: repeat(2, 1fr); } 
   .stats { gap: 40px; }
 }
+
 @media (max-width: 500px) { 
   .locales-grid { grid-template-columns: 1fr; } 
-}
-/* Animación para los botones de Registro */
-.boton-animado {
-  transition: all 0.3s ease !important;
-}
-
-.boton-animado:hover {
-  transform: translateY(-4px) !important; /* Levanta el botón */
-  box-shadow: 0 8px 15px rgba(0,0,0,0.15) !important; /* Le da sombra */
-  filter: brightness(1.05); /* Lo hace un poquito más brillante */
 }
